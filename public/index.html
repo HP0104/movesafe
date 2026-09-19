@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoveSafe VN - Bản Đồ Giao Thông Thông Minh, Cảnh Báo Ngập Lụt & Kẹt Xe</title>
+  <meta name="description" content="Hệ thống bản đồ kiểu Google Maps tích hợp cảnh báo rốn ngập HSDC/UDi, lưu lượng kẹt xe TomTom và Trợ lý AI né ngập thời gian thực.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
+
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Google Maps Style CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== 1. BẢN ĐỒ TOÀN MÀN HÌNH (GOOGLE MAPS CANVAS) ==================== -->
+  <div id="map-container"></div>
+
+  <!-- ==================== 2. THANH TÌM KIẾM & CATEGORY CHIPS GÓC TRÊN BÊN TRÁI ==================== -->
+  <div class="gm-top-container">
+    
+    <!-- Thanh tìm kiếm Google Maps -->
+    <div class="gm-search-box" id="gm-search-box">
+      <button class="gm-btn-icon" title="MoveSafe" style="color: #1a73e8; font-weight: 700; font-size: 16px;">
+        🌊
+      </button>
+      <input 
+        type="text" 
+        class="gm-input-search" 
+        id="gm-search-input" 
+        placeholder="Tìm đường, hỏi AI hoặc nhập 'từ Cầu Giấy về Hoàn Kiếm'..."
+        autocomplete="off"
+      >
+      <button class="gm-btn-icon" id="btn-voice-search" title="Tìm bằng giọng nói" onclick="window.aiChat.toggleVoiceSearch()">
+        🎙️
+      </button>
+      <button class="gm-btn-icon gm-btn-directions" id="btn-open-directions" title="Chỉ đường né ngập">
+        🔀
+      </button>
+      <div class="gm-divider-v"></div>
+      <button class="gm-btn-icon" id="btn-search-trigger" title="Tìm kiếm">
+        🔍
+      </button>
+    </div>
+
+    <!-- Bảng chỉ đường Google Maps (Directions Panel) -->
+    <div class="gm-directions-panel" id="gm-directions-panel">
+      <div class="gm-directions-header">
+        <div class="gm-travel-modes">
+          <button class="gm-mode-tab active" data-mode="motorbike">🛵 Xe máy</button>
+          <button class="gm-mode-tab" data-mode="car">🚗 Ô tô</button>
+        </div>
+        <button class="gm-btn-icon" id="btn-close-directions" title="Đóng chỉ đường">✕</button>
+      </div>
+
+      <div class="gm-route-inputs">
+        <div class="gm-input-row">
+          <div class="gm-dot-origin"></div>
+          <input type="text" class="gm-route-text-input" id="gm-route-origin" value="Cầu Giấy" placeholder="Chọn điểm đi...">
+        </div>
+        <div class="gm-input-row">
+          <div class="gm-dot-dest"></div>
+          <input type="text" class="gm-route-text-input" id="gm-route-dest" value="Nhà Hát Lớn (Hoàn Kiếm)" placeholder="Chọn điểm đến...">
+        </div>
+        <button class="gm-btn-find-route" id="btn-find-route-submit">
+          🚀 Tìm Đường Né Ngập An Toàn
+        </button>
+      </div>
+
+      <!-- Danh sách lộ trình so sánh -->
+      <div class="gm-route-results" id="gm-route-results">
+        <!-- Render kết quả tuyến đường -->
+      </div>
+    </div>
+
+    <!-- Category Filter Chips Dưới Thanh Tìm Kiếm -->
+    <div class="gm-chips-scroll" id="gm-chips-scroll">
+      <button class="gm-chip gm-chip-danger" id="chip-flood-count">
+        🌊 Rốn ngập (11)
+      </button>
+      <button class="gm-chip gm-chip-warning" id="chip-traffic-count">
+        🚗 Kẹt xe (50)
+      </button>
+      <button class="gm-chip" id="chip-ai-trigger">
+        🤖 Trợ lý AI
+      </button>
+      <button class="gm-chip" id="btn-gm-open-settings">
+        ⚙️ Cài đặt
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ==================== 3. CÔNG CỤ GÓC PHẢI TRÊN ==================== -->
+  <div class="gm-top-right-tools">
+    <select class="gm-city-select" id="city-select-gm">
+      <option value="hanoi" selected>📍 Hà Nội</option>
+      <option value="hcm">📍 TP. Hồ Chí Minh</option>
+      <option value="danang">📍 Đà Nẵng</option>
+    </select>
+
+    <button class="gm-btn-report-circle" id="btn-gm-open-report">
+      <span>+</span> Báo Ngập / Tắc
+    </button>
+  </div>
+
+  <!-- ==================== 4. THỜI TIẾT & CHỈ SỐ RỦI RO (GÓC DƯỚI TRÁI) ==================== -->
+  <div class="gm-bottom-left-widget">
+    <div class="gm-weather-pill" id="gm-weather-pill" onclick="window.aiChat.open(); window.aiChat.sendMessage('Dự báo thời tiết và nguy cơ ngập hôm nay thế nào?')">
+      <span class="gm-risk-dot" id="weather-risk-dot"></span>
+      <span id="weather-pill-text">🌦️ Đang tải thời tiết...</span>
+    </div>
+  </div>
+
+  <!-- ==================== 5. CỤM PHÍM ĐIỀU KHIỂN BẢN ĐỒ (GÓC DƯỚI PHẢI) ==================== -->
+  <div class="gm-controls-bottom-right">
+    
+    <!-- Menu chọn lớp bản đồ -->
+    <div class="gm-layer-menu" id="gm-layer-menu">
+      <div style="font-size: 12px; font-weight: 700; color: #5f6368; margin-bottom: 4px;">LỚP BẢN ĐỒ</div>
+      <label class="gm-layer-item">
+        <span>🚗 Lưu lượng xe TomTom</span>
+        <input type="checkbox" id="chk-layer-traffic" checked>
+      </label>
+      <label class="gm-layer-item">
+        <span>🌊 Điểm ngập HSDC/UDi</span>
+        <input type="checkbox" id="chk-layer-flood" checked>
+      </label>
+      <label class="gm-layer-item">
+        <span>🛰️ Chế độ vệ tinh</span>
+        <input type="checkbox" id="chk-layer-satellite">
+      </label>
+    </div>
+
+    <!-- Nút Bật tắt Layer -->
+    <button class="gm-map-btn gm-map-btn-standalone" id="btn-gm-layers" title="Các lớp bản đồ">
+      🌐
+    </button>
+
+    <!-- Nút Làm mới Bot -->
+    <button class="gm-map-btn gm-map-btn-standalone" id="btn-gm-bot-refresh" title="Bắt dữ liệu mới từ HSDC, UDi, VOV & TomTom">
+      🔄
+    </button>
+
+    <!-- Nút Định vị GPS của tôi -->
+    <button class="gm-map-btn gm-map-btn-standalone" id="btn-gm-locate" title="Vị trí của tôi">
+      🎯
+    </button>
+
+    <!-- Cụm Phóng to / Thu nhỏ Google Maps -->
+    <div class="gm-control-card">
+      <button class="gm-map-btn" id="btn-gm-zoom-in" title="Phóng to">＋</button>
+      <div style="height: 1px; background: #e8eaed;"></div>
+      <button class="gm-map-btn" id="btn-gm-zoom-out" title="Thu nhỏ">－</button>
+    </div>
+
+  </div>
+
+  <!-- ==================== 6. TRỢ LÝ AI COPILOT DRAWER (BÊN PHẢI) ==================== -->
+  <div class="gm-ai-drawer" id="ai-chat-window">
+    <div class="gm-ai-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 20px;">🤖</span>
+        <div>
+          <div style="font-size: 14px; font-weight: 700;">Trợ Lý AI Giao Thông</div>
+          <div style="font-size: 11px; color: #1e8e3e;">● Dữ liệu thực HSDC & TomTom</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <button class="gm-btn-icon" onclick="window.aiChat.clearMessages()" title="Xóa tin nhắn">🗑️</button>
+        <button class="gm-btn-icon" onclick="window.aiChat.close()" title="Đóng">✕</button>
+      </div>
+    </div>
+
+    <div class="gm-ai-body" id="ai-chat-body">
+      <!-- Chat bubbles render tại đây -->
+    </div>
+
+    <div class="gm-ai-footer">
+      <input 
+        type="text" 
+        class="gm-ai-input" 
+        id="ai-chat-input" 
+        placeholder="Hỏi về đường đi, rốn ngập, kẹt xe..."
+        onkeydown="if(event.key==='Enter') window.aiChat.sendMessage()"
+      >
+      <button class="gm-btn-icon" onclick="window.aiChat.toggleVoiceSearch()" title="Giọng nói">
+        🎙️
+      </button>
+      <button class="gm-btn-icon" style="color: #1a73e8;" onclick="window.aiChat.sendMessage()">
+        ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== 7. MODAL: BÁO CÁO SỰ CỐ CỘNG ĐỒNG ==================== -->
+  <div class="modal-overlay" id="modal-report">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 16px; font-weight: 700;">📢 Báo Cáo Điểm Ngập / Kẹt Xe</h3>
+        <button class="gm-btn-icon" id="btn-close-report">✕</button>
+      </div>
+      <form id="form-report">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Loại sự cố</label>
+            <select class="form-control" id="report-type">
+              <option value="flood">🌊 Điểm ngập úng nước sâu</option>
+              <option value="traffic_jam">🚗 Điểm ùn tắc giao thông nghiêm trọng</option>
+              <option value="hazard">⚠️ Sự cố đường / Cây đổ</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tên tuyến đường / Nút giao</label>
+            <input type="text" class="form-control" id="report-location-name" placeholder="Ví dụ: Phố Nguyễn Khuyến" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mực nước ngập</label>
+            <select class="form-control" id="report-depth">
+              <option value="15">~15 cm (Mắt cá chân)</option>
+              <option value="30" selected>~30 cm (Nửa bánh xe máy)</option>
+              <option value="50">>45 cm (Ngập lút yên xe)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-gm-cancel" onclick="document.getElementById('modal-report').classList.remove('open')">Hủy</button>
+          <button type="submit" class="btn-gm-primary" style="background: #d93025;">Gửi Báo Cáo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== 8. MODAL: CÀI ĐẶT API KEYS ==================== -->
+  <div class="modal-overlay" id="modal-settings">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 16px; font-weight: 700;">⚙️ Quản Lý Cấu Hình & API Keys</h3>
+        <button class="gm-btn-icon" id="btn-close-settings">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Google Gemini API Key (Trợ lý AI)</label>
+          <input type="password" class="form-control" id="setting-gemini-key" placeholder="AIzaSy... (Để trống để dùng AI nội bộ)">
+          <div style="font-size: 11px; color: #70757a;">
+            Lấy key miễn phí tại <a href="https://aistudio.google.com/" target="_blank" style="color: #1a73e8;">Google AI Studio</a>.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">TomTom Traffic API Key (Lưu lượng kẹt xe)</label>
+          <input type="text" class="form-control" id="setting-tomtom-key" placeholder="Điền TomTom API Key của bạn...">
+          <div style="font-size: 11px; color: #1e8e3e;">
+            ✓ Tự động nạp từ file .env máy chủ
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">OpenWeatherMap API Key (Thời tiết)</label>
+          <input type="text" class="form-control" id="setting-owm-key" placeholder="Điền OpenWeather API Key của bạn...">
+          <div style="font-size: 11px; color: #70757a;">
+            Tự động Fallback sang Open-Meteo không giới hạn.
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-gm-cancel" onclick="document.getElementById('modal-settings').classList.remove('open')">Đóng</button>
+        <button type="button" class="btn-gm-primary" id="btn-save-settings">Lưu Cấu Hình</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Client-side Scripts -->
+  <script src="js/weather-service.js"></script>
+  <script src="js/routing-service.js"></script>
+  <script src="js/map-engine.js"></script>
+  <script src="js/crowdsource.js"></script>
+  <script src="js/ai-chat.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

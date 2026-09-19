@@ -1,0 +1,29 @@
+{
+  "name": "movesafe-vn",
+  "version": "1.0.0",
+  "description": "Cổng thông tin giao thông thông minh thời gian thực: Thời tiết, Ngập lụt HSDC/UDi, Kẹt xe TomTom, Dẫn đường né ngập & Trợ lý AI",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "bot": "node server/bot-runner.js",
+    "dev": "node server/server.js"
+  },
+  "keywords": [
+    "traffic",
+    "flood-alert",
+    "weather",
+    "ai-copilot",
+    "vietnam",
+    "tomtom",
+    "hsdc",
+    "udimaps"
+  ],
+  "author": "MoveSafe Team",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
