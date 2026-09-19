@@ -1,0 +1,853 @@
+/* ==========================================================================
+   MoveSafe VN - Authentic Google Maps UI/UX Design System
+   Sạch sẽ, trực quan, dễ nhìn, chuẩn phong cách Google Maps
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Google+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Google Maps Color Palette */
+  --gm-blue: #1a73e8;
+  --gm-blue-hover: #1557d0;
+  --gm-blue-light: #e8f0fe;
+  --gm-red: #d93025;
+  --gm-red-light: #fce8e6;
+  --gm-green: #1e8e3e;
+  --gm-green-light: #e6f4ea;
+  --gm-yellow: #f9ab00;
+  --gm-yellow-light: #fef7e0;
+
+  --gm-surface: #ffffff;
+  --gm-text-main: #202124;
+  --gm-text-sub: #5f6368;
+  --gm-text-muted: #70757a;
+  --gm-border: #dadce0;
+  --gm-divider: #e8eaed;
+
+  /* Google Elevation Shadows */
+  --gm-shadow-1: 0 1px 2px rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+  --gm-shadow-2: 0 2px 6px rgba(60,64,67,0.3), 0 1px 2px rgba(60,64,67,0.15);
+  --gm-shadow-3: 0 4px 12px rgba(60,64,67,0.25), 0 1px 3px rgba(60,64,67,0.15);
+  --gm-shadow-hover: 0 6px 16px rgba(60,64,67,0.3);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 24px;
+  --radius-circle: 50%;
+
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #e5e3df;
+  color: var(--gm-text-main);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Full-Screen Map Canvas (Bản đồ Google Maps chiếm 100% màn hình)
+   ========================================================================== */
+#map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Google Maps Floating Top-Left Search Card & Category Chips
+   ========================================================================== */
+.gm-top-container {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none; /* Let clicks through outside cards */
+  max-width: 430px;
+  width: calc(100vw - 24px);
+}
+
+.gm-top-container > * {
+  pointer-events: auto; /* Re-enable clicks */
+}
+
+/* Thanh tìm kiếm Google Maps */
+.gm-search-box {
+  background: var(--gm-surface);
+  height: 48px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--gm-shadow-2);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 8px;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.gm-search-box:focus-within {
+  box-shadow: var(--gm-shadow-3);
+  border-color: var(--gm-border);
+}
+
+.gm-btn-icon {
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gm-text-sub);
+  font-size: 18px;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.gm-btn-icon:hover {
+  background-color: rgba(60,64,67,0.08);
+  color: var(--gm-text-main);
+}
+
+.gm-btn-directions {
+  background-color: var(--gm-blue-light);
+  color: var(--gm-blue);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-circle);
+}
+
+.gm-btn-directions:hover {
+  background-color: #d2e3fc;
+  color: var(--gm-blue-hover);
+}
+
+.gm-input-search {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: 15px;
+  color: var(--gm-text-main);
+  background: transparent;
+}
+
+.gm-input-search::placeholder {
+  color: var(--gm-text-muted);
+}
+
+.gm-divider-v {
+  width: 1px;
+  height: 24px;
+  background-color: var(--gm-divider);
+  flex-shrink: 0;
+}
+
+/* Category Filter Chips Dưới Thanh Tìm Kiếm */
+.gm-chips-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.gm-chips-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.gm-chip {
+  background: var(--gm-surface);
+  border: 1px solid var(--gm-border);
+  border-radius: var(--radius-pill);
+  height: 34px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gm-text-main);
+  box-shadow: var(--gm-shadow-1);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.gm-chip:hover {
+  background-color: #f8f9fa;
+  box-shadow: var(--gm-shadow-2);
+}
+
+.gm-chip.active {
+  background-color: var(--gm-blue-light);
+  border-color: var(--gm-blue);
+  color: var(--gm-blue);
+}
+
+.gm-chip-danger {
+  color: var(--gm-red);
+}
+
+.gm-chip-danger.active {
+  background-color: var(--gm-red-light);
+  border-color: var(--gm-red);
+}
+
+.gm-chip-warning {
+  color: #b06000;
+}
+
+/* ==========================================================================
+   Google Maps Directions Panel (Bảng Chỉ Đường Lộ Trình Né Ngập)
+   ========================================================================== */
+.gm-directions-panel {
+  background: var(--gm-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--gm-shadow-3);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  animation: slideDown 0.25s cubic-bezier(0,0,0.2,1);
+}
+
+.gm-directions-panel.open {
+  display: flex;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gm-directions-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--gm-divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gm-travel-modes {
+  display: flex;
+  gap: 8px;
+}
+
+.gm-mode-tab {
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gm-text-sub);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.gm-mode-tab.active {
+  background: var(--gm-blue-light);
+  color: var(--gm-blue);
+  font-weight: 700;
+}
+
+.gm-route-inputs {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f8f9fa;
+  border-bottom: 1px solid var(--gm-divider);
+}
+
+.gm-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gm-surface);
+  border: 1px solid var(--gm-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+}
+
+.gm-dot-origin {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--gm-blue);
+  background: transparent;
+}
+
+.gm-dot-dest {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gm-red);
+}
+
+.gm-route-text-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--gm-text-main);
+  background: transparent;
+}
+
+.gm-btn-find-route {
+  background: var(--gm-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  height: 38px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+  margin-top: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.gm-btn-find-route:hover {
+  background: var(--gm-blue-hover);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Danh sách tuyến đường gợi ý (Route Cards phong cách Google Maps) */
+.gm-route-results {
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gm-route-card {
+  border: 1px solid var(--gm-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--gm-surface);
+}
+
+.gm-route-card:hover {
+  border-color: var(--gm-blue);
+  background: #fdfdfd;
+}
+
+.gm-route-card.selected-safe {
+  border: 2px solid var(--gm-green);
+  background: var(--gm-green-light);
+}
+
+.gm-route-card.hazard-card {
+  border: 1px solid #f5c6cb;
+  background: #fff5f5;
+}
+
+.gm-route-time {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.gm-time-safe { color: var(--gm-green); }
+.gm-time-hazard { color: var(--gm-red); }
+
+.gm-route-meta {
+  font-size: 13px;
+  color: var(--gm-text-sub);
+  margin-top: 2px;
+}
+
+.gm-route-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+
+.gm-tag-safe {
+  background: #cbf0d8;
+  color: var(--gm-green);
+}
+
+.gm-tag-danger {
+  background: #fad2cf;
+  color: var(--gm-red);
+}
+
+/* ==========================================================================
+   Floating Weather & Flood Risk Pill (Góc Dưới Bên Trái - Như Google Maps)
+   ========================================================================== */
+.gm-bottom-left-widget {
+  position: absolute;
+  bottom: 24px;
+  left: 16px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.gm-weather-pill {
+  pointer-events: auto;
+  background: var(--gm-surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--gm-shadow-2);
+  height: 42px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.gm-weather-pill:hover {
+  box-shadow: var(--gm-shadow-hover);
+  border-color: var(--gm-border);
+}
+
+.gm-risk-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--gm-green);
+}
+
+.gm-risk-dot.risk-danger {
+  background-color: var(--gm-red);
+  box-shadow: 0 0 0 4px rgba(217, 48, 37, 0.2);
+}
+
+.gm-risk-dot.risk-warning {
+  background-color: var(--gm-yellow);
+  box-shadow: 0 0 0 4px rgba(249, 171, 0, 0.2);
+}
+
+/* ==========================================================================
+   Google Maps Floating Control Buttons (Góc Dưới Bên Phải)
+   ========================================================================== */
+.gm-controls-bottom-right {
+  position: absolute;
+  bottom: 24px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.gm-control-card {
+  background: var(--gm-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--gm-shadow-2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.gm-map-btn {
+  background: var(--gm-surface);
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gm-text-sub);
+  font-size: 18px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.gm-map-btn:hover {
+  background-color: rgba(60,64,67,0.08);
+  color: var(--gm-text-main);
+}
+
+.gm-map-btn-standalone {
+  border-radius: var(--radius-sm);
+  box-shadow: var(--gm-shadow-2);
+}
+
+/* City Switcher Pill Ở Góc Phải Trên */
+.gm-top-right-tools {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gm-city-select {
+  background: var(--gm-surface);
+  border: 1px solid var(--gm-border);
+  box-shadow: var(--gm-shadow-2);
+  border-radius: var(--radius-pill);
+  height: 38px;
+  padding: 0 14px;
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gm-text-main);
+  outline: none;
+  cursor: pointer;
+}
+
+.gm-btn-report-circle {
+  background: var(--gm-red);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  height: 38px;
+  padding: 0 16px;
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: var(--gm-shadow-2);
+  transition: var(--transition);
+}
+
+.gm-btn-report-circle:hover {
+  background: #c5221f;
+  box-shadow: var(--gm-shadow-hover);
+}
+
+/* ==========================================================================
+   Google Assistant / AI Copilot Drawer (Bên Phải Màn Hình)
+   ========================================================================== */
+.gm-ai-drawer {
+  position: absolute;
+  top: 12px;
+  bottom: 24px;
+  right: 12px;
+  width: 380px;
+  max-width: calc(100vw - 24px);
+  background: var(--gm-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--gm-shadow-3);
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateX(120%);
+  transition: transform 0.3s cubic-bezier(0,0,0.2,1);
+}
+
+.gm-ai-drawer.open {
+  transform: translateX(0);
+}
+
+.gm-ai-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--gm-divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gm-ai-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f8f9fa;
+}
+
+.gm-chat-bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.gm-bubble-user {
+  align-self: flex-end;
+  background: var(--gm-blue);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.gm-bubble-bot {
+  align-self: flex-start;
+  background: var(--gm-surface);
+  border: 1px solid var(--gm-border);
+  color: var(--gm-text-main);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  border-bottom-left-radius: 4px;
+}
+
+.gm-ai-footer {
+  padding: 12px 14px;
+  background: var(--gm-surface);
+  border-top: 1px solid var(--gm-divider);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.gm-ai-input {
+  flex: 1;
+  border: 1px solid var(--gm-border);
+  border-radius: var(--radius-pill);
+  height: 40px;
+  padding: 0 16px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  outline: none;
+}
+
+.gm-ai-input:focus {
+  border-color: var(--gm-blue);
+}
+
+/* ==========================================================================
+   Google Maps Custom Markers
+   ========================================================================== */
+.gm-flood-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.gm-flood-badge {
+  background: var(--gm-red);
+  color: #ffffff;
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gm-flood-badge.badge-medium {
+  background: var(--gm-yellow);
+  color: #202124;
+}
+
+.gm-pin-point {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--gm-red);
+}
+
+.gm-pin-point.point-medium {
+  border-top-color: var(--gm-yellow);
+}
+
+.gm-traffic-pin {
+  background: #f29900;
+  color: #ffffff;
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Google Maps Leaflet Popup */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--gm-shadow-3) !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+  font-family: var(--font-family) !important;
+  color: var(--gm-text-main) !important;
+  line-height: 1.4 !important;
+}
+
+/* ==========================================================================
+   Modals (Báo Cáo & Cài Đặt)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(32,33,36,0.6);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--gm-shadow-3);
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--gm-divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gm-text-sub);
+}
+
+.form-control {
+  border: 1px solid var(--gm-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--gm-blue);
+}
+
+.modal-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--gm-divider);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background: #f8f9fa;
+}
+
+.btn-gm-primary {
+  background: var(--gm-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-gm-cancel {
+  background: transparent;
+  border: none;
+  color: var(--gm-text-sub);
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+/* Layer Switch Menu Box (Nhỏ gọn góc dưới) */
+.gm-layer-menu {
+  position: absolute;
+  bottom: 80px;
+  right: 16px;
+  background: var(--gm-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--gm-shadow-3);
+  padding: 10px 14px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.gm-layer-menu.open {
+  display: flex;
+}
+
+.gm-layer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--gm-text-main);
+  cursor: pointer;
+}

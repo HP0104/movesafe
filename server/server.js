@@ -10,7 +10,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(__dirname, '..')));
 
 // 1. API Cấu hình công khai cho Frontend
 app.get('/api/config', (req, res) => {
@@ -93,7 +93,7 @@ app.post('/api/ai/chat', async (req, res) => {
 
 // Fallback route cho Single Page Application
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // Khởi động server có cơ chế tự động chuyển cổng nếu cổng 3000 bị bận

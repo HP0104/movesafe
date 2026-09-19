@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-19T15:40:52.062Z",
+  "lastUpdated": "2026-09-19T15:45:53.333Z",
   "weatherAlerts": [
     {
       "id": "nchmf-fb-1",
@@ -211,7 +211,7 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-1",
@@ -223,7 +223,7 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-2",
@@ -235,7 +235,7 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-3",
@@ -247,7 +247,7 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-4",
@@ -259,10 +259,34 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-5",
+      "city": "hcm",
+      "lat": 10.7744685129,
+      "lng": 106.6227932103,
+      "type": "traffic_jam",
+      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 900,
+      "speedKmh": 5,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-6",
+      "city": "hcm",
+      "lat": 10.7889926837,
+      "lng": 106.6250395604,
+      "type": "traffic_jam",
+      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 900,
+      "speedKmh": 5,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-7",
       "city": "hcm",
       "lat": 10.8184366529,
       "lng": 106.6279980369,
@@ -271,10 +295,10 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
-      "id": "tomtom-hcm-6",
+      "id": "tomtom-hcm-8",
       "city": "hcm",
       "lat": 10.8263934279,
       "lng": 106.6311724313,
@@ -283,82 +307,34 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-7",
-      "city": "hcm",
-      "lat": 10.8031775155,
-      "lng": 106.6308934816,
-      "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 900,
-      "speedKmh": 5,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-8",
-      "city": "hcm",
-      "lat": 10.8084306758,
-      "lng": 106.6342435606,
-      "type": "traffic_jam",
-      "description": "Slow traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 300,
-      "speedKmh": 18,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-9",
       "city": "hcm",
-      "lat": 10.8000380406,
-      "lng": 106.6371188887,
+      "lat": 10.803294182,
+      "lng": 106.6315908559,
       "type": "traffic_jam",
       "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-10",
       "city": "hcm",
-      "lat": 10.8015936619,
-      "lng": 106.6372288593,
-      "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 900,
-      "speedKmh": 5,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-11",
-      "city": "hcm",
-      "lat": 10.7829402489,
-      "lng": 106.6374555059,
-      "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 900,
-      "speedKmh": 5,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-12",
-      "city": "hcm",
-      "lat": 10.8041337352,
-      "lng": 106.637558771,
+      "lat": 10.8061574792,
+      "lng": 106.6350106724,
       "type": "traffic_jam",
       "description": "Slow traffic - Khu vực TP. Hồ Chí Minh",
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
-      "id": "tomtom-hcm-13",
+      "id": "tomtom-hcm-11",
       "city": "hcm",
       "lat": 10.8415492206,
       "lng": 106.6384023257,
@@ -367,46 +343,46 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-12",
+      "city": "hcm",
+      "lat": 10.8492297714,
+      "lng": 106.6251709886,
+      "type": "traffic_jam",
+      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 900,
+      "speedKmh": 5,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-13",
+      "city": "hcm",
+      "lat": 10.7543627176,
+      "lng": 106.6409236022,
+      "type": "traffic_jam",
+      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 900,
+      "speedKmh": 5,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-14",
       "city": "hcm",
-      "lat": 10.8506325152,
-      "lng": 106.6281951793,
+      "lat": 10.7878889491,
+      "lng": 106.6409236022,
       "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 900,
-      "speedKmh": 5,
+      "description": "Queuing traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 600,
+      "speedKmh": 10,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hcm-15",
-      "city": "hcm",
-      "lat": 10.7863064146,
-      "lng": 106.6424698957,
-      "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 900,
-      "speedKmh": 5,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-16",
-      "city": "hcm",
-      "lat": 10.754456593,
-      "lng": 106.6400626131,
-      "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 900,
-      "speedKmh": 5,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-17",
       "city": "hcm",
       "lat": 10.7791516411,
       "lng": 106.6448691317,
@@ -415,22 +391,10 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
-      "id": "tomtom-hcm-18",
-      "city": "hcm",
-      "lat": 10.7878889491,
-      "lng": 106.6409236022,
-      "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 900,
-      "speedKmh": 5,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-19",
+      "id": "tomtom-hcm-16",
       "city": "hcm",
       "lat": 10.8018981326,
       "lng": 106.6474856265,
@@ -439,10 +403,22 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
-      "id": "tomtom-hcm-20",
+      "id": "tomtom-hcm-17",
+      "city": "hcm",
+      "lat": 10.8018311128,
+      "lng": 106.6488884219,
+      "type": "traffic_jam",
+      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 900,
+      "speedKmh": 5,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-18",
       "city": "hcm",
       "lat": 10.8612473847,
       "lng": 106.6497722097,
@@ -451,22 +427,10 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
-      "id": "tomtom-hcm-21",
-      "city": "hcm",
-      "lat": 10.7872975169,
-      "lng": 106.6514767536,
-      "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 900,
-      "speedKmh": 5,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-22",
+      "id": "tomtom-hcm-19",
       "city": "hcm",
       "lat": 10.8076689387,
       "lng": 106.6519220003,
@@ -475,31 +439,67 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
-      "id": "tomtom-hcm-23",
+      "id": "tomtom-hcm-20",
       "city": "hcm",
-      "lat": 10.8377699969,
-      "lng": 106.6532228716,
-      "type": "traffic_jam",
-      "description": "Queuing traffic - Khu vực TP. Hồ Chí Minh",
-      "delaySeconds": 600,
-      "speedKmh": 10,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
-    },
-    {
-      "id": "tomtom-hcm-24",
-      "city": "hcm",
-      "lat": 10.7237425475,
-      "lng": 106.655858142,
+      "lat": 10.7244694959,
+      "lng": 106.655883623,
       "type": "traffic_jam",
       "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.941Z"
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-21",
+      "city": "hcm",
+      "lat": 10.7959356209,
+      "lng": 106.6564200648,
+      "type": "traffic_jam",
+      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 900,
+      "speedKmh": 5,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-22",
+      "city": "hcm",
+      "lat": 10.8000514611,
+      "lng": 106.6607102581,
+      "type": "traffic_jam",
+      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 900,
+      "speedKmh": 5,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-23",
+      "city": "hcm",
+      "lat": 10.8517322322,
+      "lng": 106.6618944534,
+      "type": "traffic_jam",
+      "description": "Stationary traffic - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 900,
+      "speedKmh": 5,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
+    },
+    {
+      "id": "tomtom-hcm-24",
+      "city": "hcm",
+      "lat": 10.7867704719,
+      "lng": 106.6639074512,
+      "type": "traffic_jam",
+      "description": "Closed - Khu vực TP. Hồ Chí Minh",
+      "delaySeconds": 300,
+      "speedKmh": 18,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:49.860Z"
     },
     {
       "id": "tomtom-hanoi-0",
@@ -511,7 +511,7 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-1",
@@ -523,7 +523,7 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-2",
@@ -535,22 +535,10 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-3",
-      "city": "hanoi",
-      "lat": 21.0087562034,
-      "lng": 105.728653354,
-      "type": "traffic_jam",
-      "description": "Closed - Khu vực Hà Nội",
-      "delaySeconds": 300,
-      "speedKmh": 18,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
-    },
-    {
-      "id": "tomtom-hanoi-4",
       "city": "hanoi",
       "lat": 21.0072380432,
       "lng": 105.7312041348,
@@ -559,22 +547,22 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
-      "id": "tomtom-hanoi-5",
+      "id": "tomtom-hanoi-4",
       "city": "hanoi",
-      "lat": 21.0701667531,
-      "lng": 105.7286372608,
+      "lat": 21.0087562034,
+      "lng": 105.728653354,
       "type": "traffic_jam",
       "description": "Closed - Khu vực Hà Nội",
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
-      "id": "tomtom-hanoi-6",
+      "id": "tomtom-hanoi-5",
       "city": "hanoi",
       "lat": 21.0589000867,
       "lng": 105.7314441925,
@@ -583,7 +571,19 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
+    },
+    {
+      "id": "tomtom-hanoi-6",
+      "city": "hanoi",
+      "lat": 21.0701667531,
+      "lng": 105.7286372608,
+      "type": "traffic_jam",
+      "description": "Closed - Khu vực Hà Nội",
+      "delaySeconds": 300,
+      "speedKmh": 18,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-7",
@@ -595,7 +595,7 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-8",
@@ -607,7 +607,7 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-9",
@@ -619,7 +619,7 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-10",
@@ -631,22 +631,10 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-11",
-      "city": "hanoi",
-      "lat": 20.9107710936,
-      "lng": 105.7605461603,
-      "type": "traffic_jam",
-      "description": "Closed - Khu vực Hà Nội",
-      "delaySeconds": 300,
-      "speedKmh": 18,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
-    },
-    {
-      "id": "tomtom-hanoi-12",
       "city": "hanoi",
       "lat": 20.9109387306,
       "lng": 105.7621863312,
@@ -655,7 +643,19 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
+    },
+    {
+      "id": "tomtom-hanoi-12",
+      "city": "hanoi",
+      "lat": 20.9107710936,
+      "lng": 105.7605461603,
+      "type": "traffic_jam",
+      "description": "Closed - Khu vực Hà Nội",
+      "delaySeconds": 300,
+      "speedKmh": 18,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-13",
@@ -667,22 +667,10 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-14",
-      "city": "hanoi",
-      "lat": 21.0891245384,
-      "lng": 105.7711905068,
-      "type": "traffic_jam",
-      "description": "Closed - Khu vực Hà Nội",
-      "delaySeconds": 300,
-      "speedKmh": 18,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
-    },
-    {
-      "id": "tomtom-hanoi-15",
       "city": "hanoi",
       "lat": 21.0875246122,
       "lng": 105.771320594,
@@ -691,7 +679,19 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
+    },
+    {
+      "id": "tomtom-hanoi-15",
+      "city": "hanoi",
+      "lat": 21.0891245384,
+      "lng": 105.7711905068,
+      "type": "traffic_jam",
+      "description": "Closed - Khu vực Hà Nội",
+      "delaySeconds": 300,
+      "speedKmh": 18,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-16",
@@ -703,22 +703,10 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-17",
-      "city": "hanoi",
-      "lat": 21.0375054496,
-      "lng": 105.7749201185,
-      "type": "traffic_jam",
-      "description": "Stationary traffic - Khu vực Hà Nội",
-      "delaySeconds": 900,
-      "speedKmh": 5,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
-    },
-    {
-      "id": "tomtom-hanoi-18",
       "city": "hanoi",
       "lat": 21.0189056957,
       "lng": 105.7809510654,
@@ -727,7 +715,19 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
+    },
+    {
+      "id": "tomtom-hanoi-18",
+      "city": "hanoi",
+      "lat": 20.9399173004,
+      "lng": 105.7815880901,
+      "type": "traffic_jam",
+      "description": "Closed - Khu vực Hà Nội",
+      "delaySeconds": 300,
+      "speedKmh": 18,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-19",
@@ -739,22 +739,10 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
       "id": "tomtom-hanoi-20",
-      "city": "hanoi",
-      "lat": 20.9399173004,
-      "lng": 105.7815880901,
-      "type": "traffic_jam",
-      "description": "Closed - Khu vực Hà Nội",
-      "delaySeconds": 300,
-      "speedKmh": 18,
-      "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
-    },
-    {
-      "id": "tomtom-hanoi-21",
       "city": "hanoi",
       "lat": 21.0672820008,
       "lng": 105.7837995714,
@@ -763,10 +751,10 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
-      "id": "tomtom-hanoi-22",
+      "id": "tomtom-hanoi-21",
       "city": "hanoi",
       "lat": 21.0647419772,
       "lng": 105.7830405062,
@@ -775,10 +763,10 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
-      "id": "tomtom-hanoi-23",
+      "id": "tomtom-hanoi-22",
       "city": "hanoi",
       "lat": 21.0939190525,
       "lng": 105.786167962,
@@ -787,10 +775,10 @@
       "delaySeconds": 300,
       "speedKmh": 18,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
     },
     {
-      "id": "tomtom-hanoi-24",
+      "id": "tomtom-hanoi-23",
       "city": "hanoi",
       "lat": 20.9787557102,
       "lng": 105.792790336,
@@ -799,7 +787,19 @@
       "delaySeconds": 900,
       "speedKmh": 5,
       "source": "TomTom Live Traffic API v5",
-      "updated_at": "2026-09-19T15:40:49.957Z"
+      "updated_at": "2026-09-19T15:45:50.007Z"
+    },
+    {
+      "id": "tomtom-hanoi-24",
+      "city": "hanoi",
+      "lat": 21.0902698461,
+      "lng": 105.7933965153,
+      "type": "traffic_jam",
+      "description": "Closed - Khu vực Hà Nội",
+      "delaySeconds": 300,
+      "speedKmh": 18,
+      "source": "TomTom Live Traffic API v5",
+      "updated_at": "2026-09-19T15:45:50.007Z"
     }
   ],
   "stats": {
